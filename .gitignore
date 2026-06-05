@@ -1,0 +1,31 @@
+# dependencies
+/node_modules
+
+# PRD / authoring notes — personal interview prep, never published (see PRD §5)
+*-prd.md
+auth-a2a-agent-network-prd.md
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+*.pem
+
+# logs
+*.log
+npm-debug.log*
+
+# env files
+.env
+.env.local
+
+# typescript
+*.tsbuildinfo
+dist/
+
+# terraform
+infra/terraform/.terraform/
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.*
+infra/terraform/.terraform.lock.hcl

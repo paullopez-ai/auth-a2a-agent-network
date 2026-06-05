@@ -1,0 +1,56 @@
+%% auth-a2a-agent-network — component diagram
+%% Renders the two independent agents and the protocol boundary between them.
+graph TD
+  subgraph Provider["Provider Agent · port 4001"]
+    PB[RequestBuildNode]
+    DP[DocPackageNode]
+    AS[A2ASubmitNode]
+    RH[ResponseHandlerNode]
+    AP[AppealNode]
+    PB --> DP --> AS --> RH
+    RH -->|needs-more-info| AP
+    AP --> AS
+  end
+
+  subgraph Payer["Payer Agent · port 4002"]
+    RP[RequestParseNode]
+    CL[CriteriaLookupNode]
+    EV[EvaluationNode]
+    DT[DeterminationNode]
+    HR[HumanReviewNode · interrupt-before]
+    RS[ResponseNode]
+    RP --> CL --> EV --> DT
+    DT -->|refer-human| HR
+    DT -->|otherwise| RS
+    HR --> RS
+  end
+
+  AS <-->|"A2A · HTTP / SSE / JSON-RPC 2.0"| RP
+  CL -.->|optional| MCP["clinical-rules-mcp-server · port 3001<br/>(fallback: embedded synthetic criteria)"]
+  Claude["Anthropic Claude<br/>(MOCK_LLM for demo)"] -.-> EV
+  Claude -.-> AP
+  RS -.->|determination artifact| AS
+  HR -.->|"human decision (Review UI / CLI)"| HR
+
+%% ---------------------------------------------------------------------------
+
+%% auth-a2a-agent-network — A2A message exchange sequence (Scenario 2)
+sequenceDiagram
+  participant PR as Provider Agent
+  participant PA as Payer Agent
+  Note over PR,PA: One task id tracks the entire negotiation
+
+  PR->>PA: message/send { authRequest, clinicalDocs }
+  activate PA
+  PA-->>PR: task submitted → working (SSE)
+  PA-->>PR: artifact: determination = needs-more-info
+  PA-->>PR: status input-required (final)
+  deactivate PA
+
+  Note over PR: AppealNode builds supplemental package
+  PR->>PA: message/send { appeal, supplementalDocs } (same taskId)
+  activate PA
+  PA-->>PR: status working (SSE)
+  PA-->>PR: artifact: determination = approved
+  PA-->>PR: status completed (final)
+  deactivate PA
