@@ -91,7 +91,7 @@ to build an authorization package; the Payer Agent knows how to evaluate one.
 A2A gives them the vocabulary to negotiate without either side knowing how the
 other works internally.
 
-<!-- DIAGRAM: insert rendered docs/architecture.mermaid image here -->
+![auth-a2a-agent-network architecture — Provider and Payer agents negotiating a prior authorization decision over the A2A protocol](A2A-architecture.png)
 
 See [`docs/a2a-primer.md`](docs/a2a-primer.md) for a short A2A explainer and
 [`docs/protocol-layers.md`](docs/protocol-layers.md) for how A2A + MCP +
