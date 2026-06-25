@@ -216,15 +216,6 @@ budget alert to catch runaway charges.
 
 ---
 
-## Interview Demo Guide
-
-A five-minute walkthrough lives in
-[`docs/interview-demo-guide.md`](docs/interview-demo-guide.md): start both
-agents, run Scenario 2, narrate the SSE stream, then run Scenario 3 to show the
-human-review interrupt.
-
----
-
 ## Project Layout
 
 ```
