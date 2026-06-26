@@ -8,6 +8,10 @@ import type {
   Artifact,
 } from "@a2a-js/sdk";
 import { firstDataPart } from "../../shared/types/a2a-artifacts.ts";
+
+const R = "\x1b[0m";
+const IN  = `\x1b[1;36m⟸${R}`;   // bold cyan  ⟸
+const ART = `\x1b[1;33martifact${R}`;  // bold yellow
 import {
   DeterminationSchema,
   type Determination,
@@ -97,7 +101,7 @@ async function streamOnce(message: Message): Promise<ExchangeResult> {
           taskId = t.id;
           contextId = t.contextId;
           finalState = t.status.state;
-          transcript.push(`← task created (${t.status.state})`);
+          transcript.push(`${IN} task created (${t.status.state})`);
           break;
         }
         case "status-update": {
@@ -107,7 +111,7 @@ async function streamOnce(message: Message): Promise<ExchangeResult> {
           const msg = textOf(event.status.message?.parts);
           if (msg) statusMessage = msg;
           transcript.push(
-            `← status: ${event.status.state}${event.final ? " (final)" : ""}` +
+            `${IN} status: ${event.status.state}${event.final ? " (final)" : ""}` +
               (msg ? ` — ${truncate(msg)}` : ""),
           );
           break;
@@ -117,14 +121,14 @@ async function streamOnce(message: Message): Promise<ExchangeResult> {
           if (det) {
             determination = det;
             transcript.push(
-              `← artifact: determination = ${det.outcome} ` +
+              `${IN} ${ART}: determination = ${det.outcome} ` +
                 `(conf ${det.confidence}, ${det.trustBoundary})`,
             );
           }
           break;
         }
         case "message": {
-          transcript.push(`← message: ${textOf(event.parts)}`);
+          transcript.push(`${IN} message: ${textOf(event.parts)}`);
           break;
         }
       }

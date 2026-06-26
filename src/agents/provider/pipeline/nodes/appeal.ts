@@ -2,6 +2,7 @@ import type { ProviderState, ProviderStatus } from "../state.ts";
 import { getReasoner } from "../../../../shared/llm.ts";
 import { sendAndCollect } from "../../a2a-client.ts";
 import { buildMessage } from "../../../../shared/types/a2a-artifacts.ts";
+import { OUT } from "../transcript-style.ts";
 
 /**
  * AppealNode — multi-turn A2A continuation. When the Payer returns
@@ -40,7 +41,7 @@ export async function appealNode(
     determination: det,
     status: (det?.outcome as ProviderStatus) ?? "unresolved",
     transcript: [
-      `→ AppealNode: resubmitting on task ${state.payerTaskId} with ` +
+      `${OUT} AppealNode: resubmitting on task ${state.payerTaskId} with ` +
         `${appeal.supplementalDocuments.length} supplemental doc(s)`,
       ...result.transcript,
     ],

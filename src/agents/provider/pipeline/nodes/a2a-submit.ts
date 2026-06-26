@@ -1,6 +1,7 @@
 import type { ProviderState } from "../state.ts";
 import { sendAndCollect } from "../../a2a-client.ts";
 import { buildMessage } from "../../../../shared/types/a2a-artifacts.ts";
+import { OUT } from "../transcript-style.ts";
 
 /**
  * A2ASubmitNode — the protocol hop. Sends the authorization request to the
@@ -23,7 +24,7 @@ export async function a2aSubmitNode(
     payerContextId: result.contextId,
     determination: result.determination,
     transcript: [
-      "→ A2A sendMessage → Payer (subscribed to SSE stream)",
+      `${OUT} A2A sendMessage ${OUT} Payer (subscribed to SSE stream)`,
       ...result.transcript,
     ],
   };

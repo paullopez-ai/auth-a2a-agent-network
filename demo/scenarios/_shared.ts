@@ -18,6 +18,10 @@ export function payerClient(): Promise<Client> {
   return makeFactory().createFromUrl(PAYER_URL);
 }
 
+const R   = "\x1b[0m";
+const IN  = `\x1b[1;36m⟸${R}`;            // bold cyan
+const ART = `\x1b[1;33martifact${R}`;       // bold yellow
+
 function dataPart(parts: Message["parts"] | undefined): Record<string, unknown> | undefined {
   const p = parts?.find((x) => x.kind === "data");
   return p && p.kind === "data" ? p.data : undefined;
@@ -50,13 +54,13 @@ async function streamPrint(
     switch (event.kind) {
       case "task":
         state = event.status.state;
-        console.log(`  ${label} ⟵ task ${event.id.slice(0, 8)} (${state})`);
+        console.log(`  ${label} ${IN} task ${event.id.slice(0, 8)} (${state})`);
         break;
       case "status-update": {
         state = event.status.state;
         const msg = textParts(event.status.message?.parts);
         console.log(
-          `  ${label} ⟵ status: ${state}${event.final ? " [final]" : ""}` +
+          `  ${label} ${IN} status: ${state}${event.final ? " [final]" : ""}` +
             (msg ? `\n        ${msg}` : ""),
         );
         break;
@@ -64,7 +68,7 @@ async function streamPrint(
       case "artifact-update": {
         const d = dataPart(event.artifact.parts);
         if (d) artifact = d;
-        console.log(`  ${label} ⟵ artifact: ${event.artifact.name}`);
+        console.log(`  ${label} ${IN} ${ART}: ${event.artifact.name}`);
         break;
       }
     }

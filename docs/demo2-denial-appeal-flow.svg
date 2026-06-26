@@ -1,0 +1,109 @@
+<svg viewBox="0 0 780 540" xmlns="http://www.w3.org/2000/svg" font-family="monospace, monospace" font-size="12">
+  <title>Demo 2: Denial → Appeal Flow</title>
+  <desc>LangGraph state machine showing Provider and Payer pipelines for scenario-2-denial-appeal.ts</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-a2a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/>
+    </marker>
+  </defs>
+
+  <rect width="780" height="540" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="390" y="26" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">Demo 2: Denial → Appeal</text>
+  <text x="390" y="44" text-anchor="middle" font-size="11" fill="#6b7280">scenario-2-denial-appeal.ts</text>
+
+  <!-- PROVIDER lane -->
+  <rect x="20" y="56" width="340" height="460" rx="8" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="190" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b7280">PROVIDER  ·  pipeline/graph.ts</text>
+
+  <rect x="105" y="88" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="190" y="106" text-anchor="middle" font-weight="bold" fill="#111827">requestBuild</text>
+  <text x="190" y="122" text-anchor="middle" font-size="10" fill="#6b7280">nodes/request-build.ts</text>
+
+  <rect x="105" y="158" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="190" y="176" text-anchor="middle" font-weight="bold" fill="#111827">docPackage</text>
+  <text x="190" y="192" text-anchor="middle" font-size="10" fill="#6b7280">nodes/documentation-package.ts</text>
+
+  <rect x="105" y="228" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="190" y="246" text-anchor="middle" font-weight="bold" fill="#111827">a2aSubmit</text>
+  <text x="190" y="262" text-anchor="middle" font-size="10" fill="#6b7280">nodes/a2a-submit.ts</text>
+
+  <rect x="105" y="298" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="190" y="316" text-anchor="middle" font-weight="bold" fill="#111827">responseHandler</text>
+  <text x="190" y="332" text-anchor="middle" font-size="10" fill="#6b7280">nodes/response-handler.ts</text>
+
+  <rect x="105" y="380" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="190" y="398" text-anchor="middle" font-weight="bold" fill="#111827">appeal</text>
+  <text x="190" y="414" text-anchor="middle" font-size="10" fill="#6b7280">nodes/appeal.ts</text>
+
+  <rect x="155" y="456" width="70" height="30" rx="15" fill="#6b7280"/>
+  <text x="190" y="476" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">END</text>
+
+  <!-- Provider arrows -->
+  <line x1="190" y1="132" x2="190" y2="156" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="190" y1="202" x2="190" y2="226" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="190" y1="272" x2="190" y2="296" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="190" y1="342" x2="190" y2="378" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="196" y="364" font-size="9" fill="#6b7280">needs-more-info</text>
+  <line x1="190" y1="424" x2="190" y2="454" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M277,320 Q330,320 330,471 L225,471" stroke="#6b7280" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="300" y="416" font-size="9" fill="#6b7280">done</text>
+
+  <!-- PAYER lane -->
+  <rect x="420" y="56" width="340" height="460" rx="8" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="590" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b7280">PAYER  ·  pipeline/graph.ts</text>
+
+  <rect x="505" y="88" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="590" y="106" text-anchor="middle" font-weight="bold" fill="#111827">requestParse</text>
+  <text x="590" y="122" text-anchor="middle" font-size="10" fill="#6b7280">nodes/request-parse.ts</text>
+
+  <rect x="505" y="158" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="590" y="176" text-anchor="middle" font-weight="bold" fill="#111827">criteriaLookup</text>
+  <text x="590" y="192" text-anchor="middle" font-size="10" fill="#6b7280">nodes/criteria-lookup.ts</text>
+
+  <rect x="505" y="228" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="590" y="246" text-anchor="middle" font-weight="bold" fill="#111827">evaluate</text>
+  <text x="590" y="262" text-anchor="middle" font-size="10" fill="#6b7280">nodes/evaluation.ts</text>
+
+  <rect x="505" y="298" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="590" y="316" text-anchor="middle" font-weight="bold" fill="#111827">determine</text>
+  <text x="590" y="332" text-anchor="middle" font-size="10" fill="#6b7280">nodes/determination.ts</text>
+
+  <rect x="505" y="380" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="590" y="398" text-anchor="middle" font-weight="bold" fill="#111827">response</text>
+  <text x="590" y="414" text-anchor="middle" font-size="10" fill="#6b7280">nodes/response.ts</text>
+
+  <rect x="555" y="456" width="70" height="30" rx="15" fill="#6b7280"/>
+  <text x="590" y="476" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">END</text>
+
+  <!-- Payer arrows -->
+  <line x1="590" y1="132" x2="590" y2="156" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="590" y1="202" x2="590" y2="226" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="590" y1="272" x2="590" y2="296" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="590" y1="342" x2="590" y2="378" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="590" y1="424" x2="590" y2="454" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- A2A arrows -->
+  <path d="M275,250 L505,110" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrow-a2a)" stroke-dasharray="6,3"/>
+  <text x="370" y="168" text-anchor="middle" font-size="10" font-weight="bold" fill="#6366f1">A2A / HTTP</text>
+
+  <path d="M505,395 L277,315" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrow-a2a)" stroke-dasharray="6,3"/>
+  <text x="370" y="372" text-anchor="middle" font-size="10" font-weight="bold" fill="#6366f1">needs-more-info</text>
+
+  <path d="M275,400 Q390,430 505,260" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrow-a2a)" stroke-dasharray="6,3"/>
+  <text x="400" y="450" text-anchor="middle" font-size="10" fill="#6366f1">appeal resubmit</text>
+
+  <path d="M505,405 Q440,490 277,320" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrow-a2a)" stroke-dasharray="6,3"/>
+  <text x="360" y="505" text-anchor="middle" font-size="10" fill="#6366f1">approved → done</text>
+
+  <!-- Legend -->
+  <line x1="36" y1="518" x2="60" y2="518" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="64" y="522" font-size="10" fill="#6b7280">conditional edge</text>
+  <line x1="160" y1="518" x2="184" y2="518" stroke="#6366f1" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="188" y="522" font-size="10" fill="#6366f1">A2A protocol boundary</text>
+</svg>

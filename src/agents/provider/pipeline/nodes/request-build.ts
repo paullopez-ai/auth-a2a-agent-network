@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { AuthRequestSchema } from "../../../../shared/types/auth-request.ts";
 import type { ProviderState } from "../state.ts";
+import { OUT } from "../transcript-style.ts";
 
 /**
  * RequestBuildNode — assembles the canonical authorization request from the
@@ -15,7 +16,7 @@ export function requestBuildNode(state: ProviderState): Partial<ProviderState> {
   return {
     request,
     transcript: [
-      `→ building request ${request.requestId}: CPT ${request.cptCode} ` +
+      `${OUT} building request ${request.requestId}: CPT ${request.cptCode} ` +
         `(${request.cptDescription}), ${request.planType}`,
     ],
   };

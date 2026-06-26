@@ -1,4 +1,5 @@
 import type { ProviderState, ProviderStatus } from "../state.ts";
+import { OUT, IN } from "../transcript-style.ts";
 
 /**
  * ResponseHandlerNode — interprets the Payer's determination and decides the
@@ -23,15 +24,15 @@ export function responseHandlerNode(
       return {
         needsAppeal: true,
         transcript: [
-          `← Payer requires more info: ${det.missingItems.join("; ")}`,
-          "→ routing to AppealNode",
+          `${IN} Payer requires more info: ${det.missingItems.join("; ")}`,
+          `${OUT} routing to AppealNode`,
         ],
       };
     case "needs-human-review":
       return {
         status: "pending-human",
         transcript: [
-          "← Payer routed to human review (Supervised band, confidence " +
+          `${IN} Payer routed to human review (Supervised band, confidence ` +
             `${det.confidence}); awaiting human decision on Payer task ` +
             `${state.payerTaskId}`,
         ],
@@ -39,7 +40,7 @@ export function responseHandlerNode(
     default:
       return {
         status: det.outcome as ProviderStatus,
-        transcript: [`← determination: ${det.outcome} (confidence ${det.confidence})`],
+        transcript: [`${IN} determination: ${det.outcome} (confidence ${det.confidence})`],
       };
   }
 }

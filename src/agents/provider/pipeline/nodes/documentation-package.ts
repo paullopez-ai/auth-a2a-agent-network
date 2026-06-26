@@ -1,4 +1,5 @@
 import type { ProviderState } from "../state.ts";
+import { OUT } from "../transcript-style.ts";
 
 /**
  * DocPackageNode — verifies the clinical documentation package before
@@ -11,6 +12,6 @@ export function documentationPackageNode(
   const docs = state.request.documents;
   const kinds = docs.map((d) => d.kind).join(", ") || "(none)";
   return {
-    transcript: [`→ packaging ${docs.length} document(s): ${kinds}`],
+    transcript: [`${OUT} packaging ${docs.length} document(s): ${kinds}`],
   };
 }

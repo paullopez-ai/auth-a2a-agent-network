@@ -1,0 +1,116 @@
+<svg viewBox="0 0 780 560" xmlns="http://www.w3.org/2000/svg" font-family="monospace, monospace" font-size="12">
+  <title>Demo 3: Human Review Flow</title>
+  <desc>LangGraph state machine showing Provider and Payer pipelines for scenario-3-human-review.ts, including the humanReview interrupt node</desc>
+
+  <defs>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#6b7280"/>
+    </marker>
+    <marker id="arrow-a2a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/>
+    </marker>
+    <marker id="arrow-human" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <rect width="780" height="560" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="390" y="26" text-anchor="middle" font-size="14" font-weight="bold" fill="#111827">Demo 3: Human Review</text>
+  <text x="390" y="44" text-anchor="middle" font-size="11" fill="#6b7280">scenario-3-human-review.ts</text>
+
+  <!-- PROVIDER lane -->
+  <rect x="20" y="56" width="310" height="420" rx="8" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="175" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b7280">PROVIDER  ·  pipeline/graph.ts</text>
+
+  <rect x="90" y="88" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="175" y="106" text-anchor="middle" font-weight="bold" fill="#111827">requestBuild</text>
+  <text x="175" y="122" text-anchor="middle" font-size="10" fill="#6b7280">nodes/request-build.ts</text>
+
+  <rect x="90" y="158" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="175" y="176" text-anchor="middle" font-weight="bold" fill="#111827">docPackage</text>
+  <text x="175" y="192" text-anchor="middle" font-size="10" fill="#6b7280">nodes/documentation-package.ts</text>
+
+  <rect x="90" y="228" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="175" y="246" text-anchor="middle" font-weight="bold" fill="#111827">a2aSubmit</text>
+  <text x="175" y="262" text-anchor="middle" font-size="10" fill="#6b7280">nodes/a2a-submit.ts</text>
+
+  <rect x="90" y="298" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="175" y="316" text-anchor="middle" font-weight="bold" fill="#111827">responseHandler</text>
+  <text x="175" y="332" text-anchor="middle" font-size="10" fill="#6b7280">nodes/response-handler.ts</text>
+
+  <rect x="140" y="386" width="70" height="30" rx="15" fill="#6b7280"/>
+  <text x="175" y="406" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">END</text>
+
+  <!-- Provider arrows -->
+  <line x1="175" y1="132" x2="175" y2="156" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="175" y1="202" x2="175" y2="226" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="175" y1="272" x2="175" y2="296" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="175" y1="342" x2="175" y2="384" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <text x="181" y="368" font-size="9" fill="#6b7280">done (approved)</text>
+
+  <!-- PAYER lane -->
+  <rect x="450" y="56" width="310" height="480" rx="8" fill="#f3f4f6" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="605" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b7280">PAYER  ·  pipeline/graph.ts</text>
+
+  <rect x="520" y="88" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="605" y="106" text-anchor="middle" font-weight="bold" fill="#111827">requestParse</text>
+  <text x="605" y="122" text-anchor="middle" font-size="10" fill="#6b7280">nodes/request-parse.ts</text>
+
+  <rect x="520" y="158" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="605" y="176" text-anchor="middle" font-weight="bold" fill="#111827">criteriaLookup</text>
+  <text x="605" y="192" text-anchor="middle" font-size="10" fill="#6b7280">nodes/criteria-lookup.ts</text>
+
+  <rect x="520" y="228" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="605" y="246" text-anchor="middle" font-weight="bold" fill="#111827">evaluate</text>
+  <text x="605" y="262" text-anchor="middle" font-size="10" fill="#6b7280">nodes/evaluation.ts</text>
+
+  <rect x="520" y="298" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="605" y="316" text-anchor="middle" font-weight="bold" fill="#111827">determine</text>
+  <text x="605" y="332" text-anchor="middle" font-size="10" fill="#6b7280">nodes/determination.ts</text>
+
+  <!-- humanReview — interrupt node, amber highlight -->
+  <rect x="520" y="370" width="170" height="50" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="605" y="390" text-anchor="middle" font-weight="bold" fill="#92400e">humanReview</text>
+  <text x="605" y="406" text-anchor="middle" font-size="10" fill="#b45309">nodes/human-review.ts</text>
+  <text x="605" y="418" text-anchor="middle" font-size="9" fill="#d97706">&#x23F8; interruptBefore</text>
+
+  <rect x="520" y="444" width="170" height="44" rx="6" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="605" y="462" text-anchor="middle" font-weight="bold" fill="#111827">response</text>
+  <text x="605" y="478" text-anchor="middle" font-size="10" fill="#6b7280">nodes/response.ts</text>
+
+  <rect x="570" y="510" width="70" height="30" rx="15" fill="#6b7280"/>
+  <text x="605" y="530" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">END</text>
+
+  <!-- Payer arrows -->
+  <line x1="605" y1="132" x2="605" y2="156" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="605" y1="202" x2="605" y2="226" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="605" y1="272" x2="605" y2="296" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+  <line x1="605" y1="342" x2="605" y2="368" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow2)"/>
+  <text x="611" y="360" font-size="9" fill="#6b7280">refer-human</text>
+  <line x1="605" y1="420" x2="605" y2="442" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrow-human)"/>
+  <line x1="605" y1="488" x2="605" y2="508" stroke="#6b7280" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+  <!-- A2A: a2aSubmit → requestParse -->
+  <path d="M261,250 L520,110" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrow-a2a2)" stroke-dasharray="6,3"/>
+  <text x="370" y="165" text-anchor="middle" font-size="10" font-weight="bold" fill="#6366f1">A2A / HTTP</text>
+
+  <!-- A2A return: needs-human-review → responseHandler -->
+  <path d="M520,460 L261,315" stroke="#6366f1" stroke-width="2" fill="none" marker-end="url(#arrow-a2a2)" stroke-dasharray="6,3"/>
+  <text x="370" y="415" text-anchor="middle" font-size="10" fill="#6366f1">input-required</text>
+  <text x="370" y="428" text-anchor="middle" font-size="10" fill="#6366f1">(needs-human-review)</text>
+
+  <!-- Human inject arrow -->
+  <path d="M390,395 L518,395" stroke="#d97706" stroke-width="2" fill="none" marker-end="url(#arrow-human)" stroke-dasharray="4,3"/>
+  <text x="390" y="386" font-size="10" font-weight="bold" fill="#d97706">human injects decision</text>
+  <text x="390" y="398" font-size="9" fill="#d97706">graph.updateState() + resume</text>
+
+  <!-- Legend -->
+  <line x1="36" y1="492" x2="60" y2="492" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="64" y="496" font-size="10" fill="#6b7280">conditional edge</text>
+  <line x1="170" y1="492" x2="194" y2="492" stroke="#6366f1" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="198" y="496" font-size="10" fill="#6366f1">A2A protocol boundary</text>
+  <rect x="36" y="504" width="12" height="12" rx="2" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+  <text x="52" y="515" font-size="10" fill="#d97706">interrupt node (MemorySaver)</text>
+</svg>
