@@ -228,5 +228,4 @@ docs/                  A2A primer, protocol layers, architecture.mermaid, demo g
 infra/terraform/       AWS ECS + ALB + Bedrock (Hyperscaler track)
 ```
 
-No proprietary or PHI data is used anywhere. This prototype is a portfolio and
-interview asset, not intended for production deployment.
+No proprietary or PHI data is used anywhere. This prototype is a portfolio asset, not intended for production deployment.
